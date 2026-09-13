@@ -1,8 +1,9 @@
-function Hello(props) {
-  console.log(props)
+function Hello({ person }) {
   return (
     <div>
-      <h1>{props.msg} {props.name}</h1>
+      <h1>
+        {person.msg} {person.name} {person.emj} {person.seatno}
+      </h1>
     </div>
   );
 }
