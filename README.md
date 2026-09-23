@@ -1,5 +1,5 @@
 
-# Learning React JS.
+# Learning React.
 
 # React + Vite
 
