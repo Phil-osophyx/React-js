@@ -1,15 +1,28 @@
-import Conditional from "./components/Conditional";
-import Counter from "./components/Counter";
-import Fruits from "./components/Fruits";
-import Hello from "./components/Hello";
-import Msg from "./components/Msg";
-import Form from "./components/Form"
-
+import { act, useReducer, useState } from "react";
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [state, dispatch] = useReducer(reducer, 0);
+  function reducer(state, action) {
+    if (action.type == "increment") {
+      return state + action.payload;
+    }
+    if (action.type == "decrement") {
+      return state - action.payload;
+    }
+  }
   return (
-    <div className="App">
-      <Form />
+    <div>
+      Use State:{count}
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      Use Reducer:{state}
+      <button onClick={() => dispatch({ type: "increment", payload: 1 })}>
+        Increment Count
+      </button>
+      <button onClick={() => dispatch({ type: "decrement", payload: 1 })}>
+        Decrement Count
+      </button>
     </div>
   );
 }
