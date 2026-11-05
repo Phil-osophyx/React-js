@@ -1,29 +1,25 @@
 import { act, useReducer, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [state, dispatch] = useReducer(reducer, 0);
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
   function reducer(state, action) {
     if (action.type == "increment") {
-      return state + action.payload;
+      return { ...state, count: state.count + action.payload }; 
     }
     if (action.type == "decrement") {
-      return state - action.payload;
+      return { ...state, count: state.count - action.payload };
     }
   }
   return (
     <div>
-      Use State:{count}
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
-      Use Reducer:{state}
-      <button onClick={() => dispatch({ type: "increment", payload: 1 })}>
-        Increment Count
-      </button>
-      <button onClick={() => dispatch({ type: "decrement", payload: 1 })}>
-        Decrement Count
-      </button>
-    </div>
+      {state.count}
+      <button
+        onClick={() => dispatch({ type: "increment", payload: 1 })}
+      > Increment Count</button>
+      <button
+        onClick={() => dispatch({ type: "decrement", payload: 1 })}
+      > Decrement Count</button>
+    </div>  
   );
 }
 
