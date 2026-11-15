@@ -1,3 +1,4 @@
-export default function Homepage(){
-    return <div>This is a Homepage</div>
+
+export default function Homepage() {
+  return <div>This is a Homepage</div>;
 }
