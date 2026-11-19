@@ -1,4 +1,20 @@
-
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 export default function Homepage() {
-  return <div>This is a Homepage</div>;
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate("/dashboard/profile", { state: { username } });
+  }
+  return (
+    <div>
+      This is a Homepage
+      <input
+        type=""
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <button onClick={handleClick}>Go to Profile Page</button>
+    </div>
+  );
 }
